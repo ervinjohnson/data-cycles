@@ -1,0 +1,2 @@
+FROM 115labs/grails:2.2.1
+ENTRYPOINT []

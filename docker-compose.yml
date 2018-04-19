@@ -1,0 +1,80 @@
+---
+version: '2'
+services:
+  starter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running stater worker...'
+
+  cohort:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running cohort worker...'
+
+  sync-down:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running sync-down worker...'
+
+  sfdc-ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running sfdc-ingest worker...'
+
+  merge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running merge worker...'
+
+  impala:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running impala worker...'
+
+  annotate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running annotate worker...'
+
+  calculate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running calculate worker...'
+
+  sanity-check:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running sanity check worker...'
+
+  sync-up-rds:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running sync-up-rds worker...'
+
+  cleanup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running cleanup worker...'
+
+  sync-up-impala:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running sync-up-impala worker...'
+
+  teardown:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: echo 'running teardown worker...'
