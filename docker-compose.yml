@@ -11,70 +11,111 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running cohort worker...'
+      #grails, mysql
+    command: bash -c "
+      echo 'running cohort worker...' 
+      && grails --version 
+      && mysql --version"
 
   sync-down:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running sync-down worker...'
+      #mysql, mysqldump
+    command: bash -c "
+      echo 'running sync-down worker...'
+      && mysql --version
+      && mysqldump --version"
 
   sfdc-ingest:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running sfdc-ingest worker...'
+      #mysql, python, grails, mysqlimport, gtar/tar, ssh, s3cmd
+    command: bash -c "
+      echo 'running sfdc-ingest worker...'
+      && mysql --version
+      && python --version
+      && grails --version
+      && mysqlimport --version
+      && s3cmd --version
+      && which tar
+      && which ssh"
 
   merge:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running merge worker...'
+      #mysql, grails
+    command: bash -c "
+      echo 'running merge worker...'
+      && mysql --version
+      && grails --version"
 
   impala:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running impala worker...'
+      #ssh, mysql
+    command: bash -c "
+        echo 'running impala worker...'
+        && which ssh
+        && mysql --version"
 
   annotate:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running annotate worker...'
+      #mysql
+    command: bash -c "
+        echo 'running annotate worker...'
+        && mysql --version"
 
   calculate:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running calculate worker...'
+      #mysql
+    command: bash -c "
+        echo 'running calculate worker...'
+        && mysql --version"
 
   sanity-check:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running sanity check worker...'
+      #mysql
+    command: bash -c "
+        echo 'running sanity check worker...'
+        && mysql --version"
 
   sync-up-rds:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running sync-up-rds worker...'
-
-  cleanup:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: echo 'running cleanup worker...'
+      #mysql, mysqldump
+    command: bash -c "
+        echo 'running sync-up-rds worker...'
+        && mysql --version
+        && mysqldump --version"
 
   sync-up-impala:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running sync-up-impala worker...'
+      #awk, mysql, ssh
+    command: bash -c "
+      echo 'running sync-up-impala worker...'
+      && which awk
+      && mysql --version
+      && which ssh"
 
   teardown:
     build:
       context: .
       dockerfile: Dockerfile
-    command: echo 'running teardown worker...'
+      #grails, mysql
+    command: bash -c "
+      echo 'running teardown worker...'
+      && grails --version
+      && mysql --version"
